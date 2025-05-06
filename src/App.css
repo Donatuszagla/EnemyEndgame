@@ -1,0 +1,188 @@
+
+
+main{
+  height: 90vh;
+  width: 80vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+
+.game-title{
+ display: grid;
+ place-items: center;
+ min-width: 450px;
+ max-width: 449px;
+ height: fit-content;
+ text-align: center;
+}
+.game-title p{
+  color: #8E8E8E;
+  margin: 5px 50px;
+}
+.game-title h1{
+  margin-top: 50px;
+  color: #F9F4DA;
+}
+
+.game-status-container{
+  min-width: 450px;
+  max-width: 449px;
+  min-height: 49px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  padding: 10px 0;
+  margin-top: 20px;
+  color: #F9F4DA;
+}
+.farewell{
+  background-color: #7A5EA7;
+  min-width: 450px;
+  max-width: 449px;
+  min-height: 49px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  padding: 10px 0;
+  margin-top: 20px;
+  color: #F9F4DA;
+}
+.is-won{
+  background-color: #10A95B;
+  min-width: 450px;
+  max-width: 449px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  padding: 10px 0;
+  margin-top: 20px;
+  color: #F9F4DA;
+}
+.is-lost{
+  background-color: #BA2A2A;
+  min-width: 450px;
+  max-width: 449px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  padding: 10px 0;
+  margin-top: 20px;
+  color: #F9F4DA;
+}
+
+
+.all-lang{
+  margin-top: 50px;
+  min-width: 450px;
+  max-width: 449px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.all-lang .lang-container{
+  height: fit-content;
+  width: fit-content;
+  padding: 10px 15px;
+  background-color: rebeccapurple;
+  border-radius: 5px;
+}
+.keyboard{
+  min-width: 550px;
+  max-width: 549px;
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.key-btn{
+  color: #222222;
+  font-weight: bolder;
+  font-size: larger;
+  padding: 5px 15px;
+  border-radius: 10px;
+  border: none;
+  background-color: #FCBA29;
+  width: 50px;
+  cursor: pointer;
+}
+.key-btn:disabled{
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.current-word{
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 30px;
+}
+.current-word > span{
+  font-size: 1.8rem;
+  background-color: #323232;
+  border-bottom: 5px solid #8E8E8E;
+  border-radius: 5px;
+  height: 40px;
+  width: 40px;
+  display: grid;
+  place-items: center;
+}
+.current-word > span.missed-letter{
+  color: #BA2A2A;
+}
+button.new-game{
+  background-color: #11B5E5;
+  color: #222222;
+  padding: 5px 20px;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+}
+.is-correct{
+  background-color: #10A95B;
+}
+.is-wrong{
+  background-color: #EC5D49;
+}
+span.lang-container.lost{
+  position: relative;
+}
+span.lang-container.lost::before {
+  content: "💀";
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  font-size: 0.85rem;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+}
+
+@media (min-width: 400px) and (max-width: 900px) {
+    .all-lang, .is-lost, .is-won, .farewell{
+      min-width: 300px;
+    }
+    .keyboard{
+      min-width: 350px;
+    }
+    .current-word span{
+      width: 30px;
+      height: 30;
+    }
+    main{
+      height: 100vh;
+    }
+    .new-game{
+      margin-bottom: 100px;
+    }
+}
