@@ -52,7 +52,7 @@ function App(){
     <main>
       <div className="game-title">
         <h1>Assembly: Endgame!</h1>
-        <p>Guess the word in under 8 attempts to keep the programming world safe from Assembly!</p>
+        <p>Guess the word in under 8 attempts to keep your family safe from the Enemy👹!</p>
       </div>
       
       {!isGameOver && !isLastGuessIncorrect && <GameStatus message={""} heading={""} className={"game-status-container"}/>}
@@ -68,7 +68,7 @@ function App(){
                       />
                     </>
                     }
-      {isGameLost && <GameStatus message={"You lose! Better start learning Assembly 😭"} heading={"Game over!"} className={"is-lost"}/>}
+      {isGameLost && <GameStatus message={"You lose! Better start fighting your enemy😭"} heading={"Game over!"} className={"is-lost"}/>}
       <div className="all-lang">
         {AllLangs.map((lang, index) => {
           
