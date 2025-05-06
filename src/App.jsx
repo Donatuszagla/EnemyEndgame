@@ -5,7 +5,7 @@ import ProgLang from './ProgLang';
 import { nanoid } from 'nanoid';
 import Key from './Key';
 import AllLangs from './AllLang';
-import { useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { clsx } from 'clsx';
 import { getFarewellText, randomWord } from './utils';
 import Confetti from 'react-confetti'
@@ -24,6 +24,7 @@ function App(){
   const isGameOver = isGameLost || isGameWon
   const lastGuessedLetter = guessLetters[guessLetters.length - 1]
   const isLastGuessIncorrect = lastGuessedLetter && !currentWord.includes(lastGuessedLetter)
+  const newGameRef = useRef(null)
   
   const [width, setWidth] = useState(window.innerWidth)
   const [height, setHieght] = useState(window.innerHeight)
@@ -47,18 +48,23 @@ function App(){
     setCurrentWord(randomWord())
     setGuessLetters([])
   }
+  useEffect(() => {
+    if (newGameRef.current) {
+      newGameRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [isGameOver]);
 
   return <>
     <main>
       <div className="game-title">
-        <h1>Assembly: Endgame!</h1>
+        <h1>Enemy👹: Endgame!</h1>
         <p>Guess the word in under 8 attempts to keep your family safe from the Enemy👹!</p>
       </div>
       
       {!isGameOver && !isLastGuessIncorrect && <GameStatus message={""} heading={""} className={"game-status-container"}/>}
       {!isGameOver && isLastGuessIncorrect && <GameStatus message={getFarewellText(AllLangs[wrongGuessCount - 1].text)} heading={undefined} className={"farewell"}/>}
       {isGameWon && <>
-                      <GameStatus message={"Well done!🎉"} heading={"You Win!"} className={"is-won"}/>
+                      <GameStatus message={`You've saved ${8 - wrongGuessCount} relatives🥰`} heading={"You Win!💙"} className={"is-won"}/>
                       <Confetti 
                             width={width}
                             height={height}
@@ -68,7 +74,7 @@ function App(){
                       />
                     </>
                     }
-      {isGameLost && <GameStatus message={"You lose! Better start fighting your enemy😭"} heading={"Game over!"} className={"is-lost"}/>}
+      {isGameLost && <GameStatus message={"You lose! Better start fighting your enemy💔"} heading={"Game over!"} className={"is-lost"}/>}
       <div className="all-lang">
         {AllLangs.map((lang, index) => {
           
@@ -112,7 +118,10 @@ function App(){
               isGameOver={isGameOver}
               />)})}
       </div>
-      {isGameOver && <button className="new-game" onClick={startNewGame}>New Game</button>}
+      {isGameOver && <button className="new-game" onClick={startNewGame} ref={newGameRef}>New Game</button>}
+      <footer className="empty-space">
+      © {new Date().getFullYear()} Donatus Zagla. All rights reserved.
+      </footer>
     </main>
   
   </>

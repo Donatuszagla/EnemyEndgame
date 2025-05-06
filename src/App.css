@@ -167,13 +167,24 @@ span.lang-container.lost::before {
   background-color: rgba(0, 0, 0, 0.7);
   border-radius: 5px;
 }
+.new-game, .empty-space{
+  margin-bottom: 50px;
+}
+footer{
+  padding-bottom: 50px;
+  color: #8E8E8E;
+}
 
-@media (min-width: 400px) and (max-width: 900px) {
+
+
+@media (min-width: 350px) and (max-width: 900px) {
     .all-lang, .is-lost, .is-won, .farewell{
       min-width: 300px;
+      max-width: 299px;
     }
     .keyboard{
       min-width: 350px;
+      max-width: 349px;
     }
     .current-word span{
       width: 30px;
@@ -182,7 +193,8 @@ span.lang-container.lost::before {
     main{
       height: 100vh;
     }
-    .new-game{
-      margin-bottom: 100px;
+    .empty-space{
+      height: fit-content;
+      width: fit-content;
     }
 }
